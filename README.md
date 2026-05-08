@@ -36,19 +36,13 @@ This repository contains the code for reproducing the experiments in our paper *
 
 ## Environment Setup
 
-Our experiments are built on top of [KDFlow](https://github.com/songmzhang/KDFlow). Please install it first:
+Our experiments are built on top of [KDFlow](https://github.com/songmzhang/KDFlow). Please install the dependencies:
 
 ```bash
-git clone https://github.com/songmzhang/KDFlow.git
-cd KDFlow
+git clone https://github.com/sunjie279/SimCT_.git
+cd SimCT_
 pip install -e ./
 pip install flash_attn==2.8.3 --no-build-isolation
-```
-
-Or use the Docker image:
-
-```bash
-docker pull songmzhang/kdflow:sgl059-torch291-cu128
 ```
 
 Then set the following environment variables:
@@ -154,20 +148,6 @@ bash scripts/ctopd/qwen25_phi4_span_mix10k_lr5e-7.sh
 bash scripts/ctopd/phi4_gemma2_span_mix10k_lr5e-7.sh
 ```
 
-Key hyperparameters:
-
-| Parameter | Value |
-|-----------|-------|
-| Algorithm | `span_ctkd` |
-| KD Loss | Reverse KL |
-| KD Ratio | 1.0 |
-| Learning Rate | 5e-7 |
-| Batch Size | 64 |
-| Max Seq Length | 8192 |
-| Generation Max Length | 4096 |
-| Temperature | 0.6 |
-| Epochs | 1 |
-| GPUs | 8 (colocate mode) |
 
 ### Step 5: Evaluation
 
