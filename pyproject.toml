@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kdflow"
+version = "0.1.2"
+description = "A scalable knowledge distillation framework for large language models"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+dynamic = ["dependencies"]
+
+[project.optional-dependencies]
+lora = [
+    "peft",
+]
+all = [
+    "peft",
+    "wandb",
+    "triton",
+    "flash_attn",
+    "ring_flash_attn",
+]
+
+[tool.setuptools.packages.find]
+include = ["kdflow*"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}

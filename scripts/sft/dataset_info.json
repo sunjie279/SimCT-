@@ -1,0 +1,41 @@
+{
+  "mixed_math_code_10k": {
+    "file_name": "data/mixed_math_code_10k/train_sharegpt.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "sft_warmup_10k_qwen": {
+    "file_name": "data/sft_warmup_10k_qwen2.5-7b/sft_warmup_sharegpt.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  },
+  "sft_warmup_10k_phi4": {
+    "file_name": "data/sft_warmup_10k_phi-4-mini/sft_warmup_sharegpt.json",
+    "formatting": "sharegpt",
+    "columns": {
+      "messages": "conversations"
+    },
+    "tags": {
+      "role_tag": "from",
+      "content_tag": "value",
+      "user_tag": "human",
+      "assistant_tag": "gpt"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+sglang
+torch>=2.4
+transformers>=4.37.0
+numpy
+ray>=2.0
+sglang_router
+datasets
+tqdm
+requests
+safetensors
+huggingface_hub
+torchdata
+peft
+wandb   
+triton
+ring_flash_attn
+
+# install flash_attn after torch installation:
+# pip install flash_attn==2.8.3 --no-build-isolation

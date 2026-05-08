@@ -1,0 +1,40 @@
+#!/bin/bash
+# ============================================================================
+# SFT gemma-2-2b-it on sft_warmup_10k_phi4 dataset
+# Dataset: Phi-4-mini-instruct teacher responses, quality-filtered
+# Full fine-tuning, 8x GPUs, bf16
+# ============================================================================
+
+set -e
+set -x
+
+export SGLANG_DISABLE_CUDNN_CHECK=1
+export FORCE_TORCHRUN=1
+export NNODES=1
+export NPROC_PER_NODE=8
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CONFIG_FILE="${SCRIPT_DIR}/gemma2_sft_warmup_10k_phi4.yaml"
+LOG_FILE="${SCRIPT_DIR}/gemma2_sft_warmup_10k_phi4.log"
+
+# Copy model to local SSD for faster I/O
+MODEL_PATH=${MODEL_PATH:-"./models"}
+LOCAL_MODEL_DIR="/root/workspace/models/gemma-2-2b-it"
+REMOTE_MODEL_DIR="${MODEL_PATH}/gemma-2-2b-it"
+if [ ! -d "${LOCAL_MODEL_DIR}" ]; then
+    echo "=== Copying model to local SSD ==="
+    mkdir -p "$(dirname "${LOCAL_MODEL_DIR}")"
+    rsync --progress -a "${REMOTE_MODEL_DIR}/" "${LOCAL_MODEL_DIR}/"
+    echo "=== Model copy complete ==="
+fi
+
+echo "=== Starting SFT Training ==="
+echo "Config: ${CONFIG_FILE}"
+echo "Log: ${LOG_FILE}"
+echo "GPUs: $(nvidia-smi --query-gpu=name --format=csv,noheader | wc -l)"
+echo "Start time: $(date)"
+
+llamafactory-cli train "${CONFIG_FILE}" 2>&1 | tee "${LOG_FILE}"
+
+echo "=== Training Complete ==="
+echo "End time: $(date)"
