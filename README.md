@@ -39,7 +39,7 @@ This repository contains the code for reproducing the experiments in our paper *
 Our experiments are built on top of [KDFlow](https://github.com/songmzhang/KDFlow). Please install the dependencies:
 
 ```bash
-git clone https://github.com/sunjie279/SimCT_.git
+git clone https://github.com/sunjie279/SimCT-.git
 cd SimCT_
 pip install -e ./
 pip install flash_attn==2.8.3 --no-build-isolation
