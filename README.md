@@ -187,9 +187,13 @@ This codebase is built on top of [KDFlow](https://github.com/songmzhang/KDFlow),
 ## Citation
 
 ```bibtex
-@article{simct2026,
-      title={SimCT: Recovering Lost Supervision for Cross-Tokenizer On-Policy Distillation},
-      author={TODO},
+@article{sun2026simctrecoveringlostsupervision,
+      title={SimCT: Recovering Lost Supervision for Cross-Tokenizer On-Policy Distillation}, 
+      author={Jie Sun and Mao Zheng and Mingyang Song and Qiyong Zhong and Yilin Cheng and Bichuan Feng and Pengfei Liu and Junfeng Fang and Xiang Wang},
       year={2026},
+      eprint={2605.07711},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2605.07711}, 
 }
 ```
